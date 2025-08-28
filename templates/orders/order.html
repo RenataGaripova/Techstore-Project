@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block title %}
+  Add Order Page
+{% endblock %}
+{% block content %}
+<div class="container-md my-5 shadow bg-white rounded-3 p-5">
+  <h2><span class="text-danger">*</span> Please, fill the form below to place your order:</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% bootstrap_button button_type="submit" content="Create" %}
+  </form>
+</div>
+{% endblock %}

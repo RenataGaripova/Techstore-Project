@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Products Page
+{% endblock %}
+{% block content %}
+  <div class="container-md my-5">
+    {% if sub_categories.count > 0 %}
+    <h5 class="text-start my-4 .text-dark">
+      Related categories:
+    </h5>
+      <div class="row overflow-scroll bg-white rounded-3 p-3 shadow mb-5">
+        <div class="col-md-12">
+          <div class="row row-cols-1 row-cols-md-6 justify-content-start g-2">
+            {% for sub_category in sub_categories %}
+            <div class="col">
+              {% include "includes/category_card_small.html" %}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    <h5 class="text-start my-4 .text-dark">
+      {% if 'category' in request.path %}
+        Gadgets in category: {{ category.name }}
+      {% else %}
+        List of all gadgets:
+      {% endif %}
+    </h5>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="container-fluid border shadow bg-white rounded-3 p-3">
+          <h6 class="text-center my-4">Apply Filters:</h6>
+          {% include "includes/list_group.html" %}
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="row row-cols-1 row-cols-md-4 justify-content-start g-4">
+          {% for product in page_obj %}
+          <div class="col">
+            {% include "includes/product_card.html" %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include "includes/paginator.html" %}
+{% endblock %}

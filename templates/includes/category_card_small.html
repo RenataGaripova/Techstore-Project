@@ -1,0 +1,6 @@
+<div class="card border border-white" style="width: 8rem;">
+  <img src=" {{ sub_category.photo.url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <a href="{% url 'products:category_products' sub_category.slug %}" class="card-link link-secondary" style="font-size: 0.85rem;">{{ sub_category.name }}</a>
+  </div>
+</div>

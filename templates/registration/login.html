@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% block content %}
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p class="text-center">
+        Your account does not have access to this page.
+        To continue, please log in with your account.
+        who has access.
+      </p>
+    {% else %}
+      <p class="text-center">
+        Please, log in to see this page.
+      </p>
+    {% endif %}
+  {% endif %}
+  <div class="row justify-content-center align-middle m-5">
+    <div class="col-6">
+      <img class="shadow rounded-3" src="{% static 'img/img_log.png' %}" alt="not found">
+    </div>
+    <div class="col-6" style="margin-top: 80px;">
+      <div class="card shadow-lg w-100" style="max-width: 480px;">
+        <div class="card-body">
+            <div class="text-center">
+                <h1 class="card-title h3">Sign in</h1>
+                <p class="card-text text-muted">Sign in below to access your account</p>
+            </div>
+            <div class="mt-4">
+              <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <input type="hidden" name="next" value="{% url 'products:index' %}">
+                {% bootstrap_button button_class="btn btn-primary btn-lg" button_type="submit" content="Sign in" %}
+                <div class="text-center mt-4">
+                  <a href="{% url 'registration' %}" class="text-decoration-none">Don't have an account yet? Sign up</a>
+                </div>
+                <div class="text-center mt-2">
+                  <a class="text-decoration-none grey-link" href="{% url 'password_reset' %}">Forgot password?</a>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% load static %}
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>
+      Home Page
+    </title>
+    {% bootstrap_css %}
+  </head>
+  <body class="d-flex flex-column" style="min-height: 100vh;">
+    {% include "includes/header.html" %}
+      <main>
+        <div class="container-fluid p-0 h-100">
+          <div class="container-fluid p-0">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="{% static 'img/slide1.png' %}" class="d-block w-100" alt="not found">
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'img/slide2.png' %}" class="d-block w-100" alt="not found">
+                </div>
+                <div class="carousel-item">
+                  <img src="{% static 'img/slide3.png' %}" class="d-block w-100" alt="not found">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        
+          <div class="container-md" style="max-width: 1250px;">
+            <div class="m-5">
+              <h2 class="text-center my-4">Welcome to the Gadget Hub!</h2>
+              <div class="d-flex justify-content-center my-4">
+                <a class="fs-5 link-underline-light fs-4" href="{% url 'products:category_list' %}">Go to all categories</a>
+              </div>
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 g-3 justify-content-start">
+              {% for category in category_list %}
+                <div class="col">
+                  {% include "includes/category_card_horizontal.html" %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div>
+            <img src="{% static 'img/mac1.png' %}" class="d-block w-100" alt="not found">
+          </div>
+        </div>
+      </main>
+      {% include "includes/footer.html" %}
+      <script src="{% static 'js/ajax/cart_add_handler.js' %}"></script>
+      <script src="{% static 'js/ajax/cart_change_handler.js' %}"></script>
+      <script src="{% static 'js/ajax/cart_remove_handler.js' %}"></script>
+      <script src="{% static 'js/ajax/wishlist_add_handler.js' %}"></script>
+      <script src="{% static 'js/ajax/wishlist_remove_handler.js' %}"></script>
+  </body>
+</html>

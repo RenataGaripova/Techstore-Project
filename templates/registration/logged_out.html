@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="col d-flex justify-content-center mt-5">
+    <div class="card" style="width: 40rem;">
+      <div class="card-header">
+        You have logged out!
+      </div>
+      <div class="card-body">
+        <p><a href="{% url 'login' %}">Sign in</a></p>
+        <p><a href="{% url 'products:index' %}">Home</a></p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

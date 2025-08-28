@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %}
+Product Page
+{% endblock %}
+{% block content %}
+<div class="container-md my-5">
+  <div class="row bg-white rounded shadow p-5" style="margin-bottom: 40px;">
+    <div class="col md-6 d-flex flex-column flex-md-row align-items-start gap-4">
+      <div class="flex-shrink-0 text-center" style="min-width: 500px;">
+        <img id="mainImage" src="{{ product.get_coverage_photo.url }}" class="img-fluid rounded"
+          style="max-height: 500px;" alt="product image">
+      </div>
+      <div class="d-flex flex-row flex-md-column gap-2 overflow-auto" style="max-height: 500px; max-width: 100%;">
+        {% for image in gallery %}
+        <img src="{{ image.photo.url }}" class="thumbnail border rounded p-2"
+          style="width: 80px; height: 80px; object-fit: contain; cursor: pointer;"
+          onclick="changeImage(event, this.src)">
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col md-6">
+      <h3 class="mb-4">{{ product.name }}</h3>
+      <p class="text-muted mb-3">Producer: {{ product.producer }}<span class="ms-4 bg-primary badge">Trade In</span></p>
+      <div class="d-flex justify-content-start mb-3">
+        {% if product.discount %}
+        <p class="card-text">
+          <small class="text-body-secondary text-decoration-line-through me-3">{{ product.price }}</small>
+        </p>
+        {% endif %}
+        <h4 class="text-success">${{ product.price }}</h4>
+      </div>
+      {% if average_rating %}
+      <p class="fs-5 mb-3"><b class="text-warning">★</b> Rating: {{ average_rating }}</p>
+      {% else %}
+      <p class="fs-5 mb-3"><b class="text-warning">★</b> Rating: Not rated yet</p>
+      {% endif %}
+      <div class="mb-4">
+        <p class="fs-5">Info:</p>
+        <p class="text-muted"> {{ product.info }}</p>
+      </div>
+      <div class="mb-4">
+        <form class="cart-form" data-url="{% url 'carts:cart_add' product.slug %}"
+          data-wishlist-url="{% url 'carts:wishlist_add' product.slug %}">
+          {% csrf_token %}
+          {% if product.quantity > 0 %}
+          <label for="quantity" class="mb-2">
+            <p class="fs-5">Quantity: <span style="color: red">*</span></p>
+          </label>
+          <div id="quantity-wrapper" class="mb-4"
+            style="display: flex; align-items: center; border: 1px solid #ddd; padding: 5px 10px; border-radius: 6px; width: fit-content;">
+            <button type="button" id="decrease"
+              style="background: none; border: none; font-size: 20px; cursor: pointer;">−</button>
+            <input type="text" id="quantity" name="quantity" value="1" readonly
+              style="width: 40px; text-align: center; border: none; font-size: 16px;" />
+            <button type="button" id="increase"
+              style="background: none; border: none; font-size: 20px; cursor: pointer;">+</button>
+          </div>
+          {% else %}
+          <p>
+            Sorry, {{ product.name }} has run out of stock ):
+          </p>
+          {% endif %}
+          <br>
+          <div class="row">
+            {% if product.quantity > 0 %}
+            <div class="col-6">
+              <div class="d-grid">
+                <button type="button" class="btn btn-outline-primary add-to-cart">Add to Cart</a>
+              </div>
+            </div>
+            {% endif %}
+            <div class="col-6">
+              <div class="d-grid">
+                <button type="button" class="btn btn-outline-success add-to-wishlist">Add to Wishlist</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row rounded shadow p-5 bg-white" style="margin-bottom: 40px;">
+    <div class="col mb-4">
+      <h3>Description:</h3>
+      <p class="text-muted"> {{ product.description|linebreaksbr }}</p>
+    </div>
+  </div>
+  <div class="row rounded shadow p-5 bg-white" style="margin-bottom: 100px;">
+    {% include "includes/reviews.html" %}
+  </div>
+</div>
+{% include "includes/paginator.html" %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const increaseBtn = document.getElementById("increase");
+    const decreaseBtn = document.getElementById("decrease");
+    const quantityInput = document.getElementById("quantity");
+    var maxQuantity = {{ product.quantity }};
+
+    increaseBtn.addEventListener("click", function () {
+      let curr = parseInt(quantityInput.value) || 1;
+      if (curr < maxQuantity) {
+        quantityInput.value = curr + 1;
+      }
+    });
+
+    decreaseBtn.addEventListener("click", function () {
+      let curr = parseInt(quantityInput.value) || 1;
+      if (curr > 1) {
+        quantityInput.value = curr - 1;
+      }
+    })
+  });
+</script>
+<!-- <script>
+    
+    function getMainImage(thumbnail) {
+      const mainImage = document.getElementById("mainImage");
+      mainImage.src = thumbnail.src;
+    }
+  </script> -->
+<script>
+  function changeImage(event, src) {
+    document.getElementById('mainImage').src = src;
+    document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,63 @@
+html, body {
+    height: 100%;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    flex: 1 0 auto;
+  }
+
+.base-wrapper {
+  background-color: rgb(240,241,242);
+}
+.bg-white {
+  background-color: white;
+}
+
+#id_rating {
+  width: 100px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#id_text {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#star {
+  color:gold;
+}
+.my-text-field{
+  border:1px solid #ccc; 
+  border-radius:5px;
+  margin: 10px 10px 10px 0;
+}
+
+.grey-link {
+  color:grey;
+}
+.grey-link:hover .grey-link:active{
+  color:rgb(0, 0, 0);
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.transparent-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.transparent-button img {
+  border: none;
+}

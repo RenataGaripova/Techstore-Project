@@ -1,0 +1,44 @@
+{% load django_bootstrap5 %}
+{% load static %}
+{% if user.is_authenticated %}
+  <h5 class="mb-4">You've bought this product? Share your opinion about it!:</h5>
+  <form class="mb-2 p-2 border-bottom" method="post" action="{% url 'products:add_review' product.slug %}">
+    {% csrf_token %}
+    <div class="mb-3">
+      <h6><b class="text-warning">★</b> Rate the product:</h6>
+      {{ form.rating }}
+    </div>
+    <div class="mb-3">
+      <h6><b class="text-danger">♥︎</b> Write a short overview:</h6>
+      {{ form.text }}
+    </div>
+    {% bootstrap_button button_type="submit" content="Send" %}
+    <h5 class="mt-5">Review section: </h5>
+  </form>
+{% endif %}
+<br>
+{% for review in reviews %}
+  <div class="media mb-3 p-3 border-bottom">
+    <div class="media-body">
+      <h6 class="mt-0">
+        <p class="text-primary">
+          @{{ review.author.username }}
+        </p>
+      </h6>
+      <p>
+        <b class="text-warning">★</b> Rating: {{ review.rating }}
+      </p>
+      <small class="text-muted">{{ review.created_at }}</small>
+      <br>
+      <p>{{ review.text|linebreaksbr }}</p>
+    </div>
+    {% if user == review.author %}
+      <a class="btn btn-sm text-muted p-0 me-3" href="{% url 'products:edit_review' product.slug review.id %}" role="button">
+        Edit review
+      </a>
+      <a class="btn btn-sm text-muted p-0" href="{% url 'products:delete_review' product.slug review.id %}" role="button">
+        Delete review
+      </a>
+    {% endif %}
+  </div>
+{% endfor %}

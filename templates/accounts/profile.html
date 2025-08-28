@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block title %}
+  Profile Page
+{% endblock %}
+{% block content %}
+<div class="container-md my-5 shadow bg-white rounded-3">
+  <div class="row">
+    <div class="col-3 p-5">
+      <h3 class="ms-2">Hello, {{ user.username }}!</h3>
+      <ul class="nav flex-column mt-4">
+        <li class="nav-item mb-2">
+          <a class="nav-link active" aria-current="page" href="{% url 'accounts:profile' request.user.username  %}">Personal Information</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a class="nav-link" href="{% url 'carts:cart_items' %}">Cart</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a class="nav-link" href="{% url 'carts:wishlist_items' %}">Wishlist</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a class="nav-link" href="{% url 'orders:order_list' %}">Orders</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-9 p-5">
+      <div class="border-bottom pb-3 mb-4">
+        <h3>Personal Information</h3>
+      </div>
+      <div class="mb-4">
+        <h4>Sign In Information</h4>
+        <div class="row mb-3 mt-4">
+          <div class="col-3 text-muted">Email</div>
+          <div class="col text-muted">{{ user.email }}</div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-3 text-muted">Password</div>
+          <div class="col">
+            ****** <a class="text-dark ms-3" href="{% url 'password_change' %}">Change</a>
+          </div>
+        </div>
+      </div>
+      <div class="mb-4">
+        <h4>About Me</h4>
+        {% if 'profile_details' in request.path %}
+        <div class="row mb-3 mt-4">
+          <div class="col-3 text-muted">First Name</div>
+          <div class="col">
+            {% if user.first_name %}
+              {{ user.first_name }}
+            {% else %}
+              Not defined
+            {% endif %}
+          </div>
+          <div class="col-3 text-muted">Last Name</div>
+          <div class="col">
+            {% if user.first_name %}
+              {{ user.last_name }}
+            {% else %}
+              Not defined
+            {% endif %}
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-3  text-muted">Phone number</div>
+          <div class="col">
+            {% if user.phone_number %}
+              {{ user.phone_number }}
+            {% else %}
+              Not defined
+            {% endif %}
+          </div>
+          <div class="container mt-4">
+            <a  href="{% url 'accounts:edit_profile'%}" class="btn btn-outline-primary" >Update Personal Info</a>
+          </div>
+        </div>
+        {% elif 'edit_profile' in request.path  %}
+          <div class="mb-4 mt-4">
+            <div class="card">
+              
+              <div class="card-body">
+                <form method="post">
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col">
+                        {% bootstrap_field form.first_name show_label=True %}
+                    </div>
+                    <div class="col">
+                        {% bootstrap_field form.last_name show_label=True %}
+                    </div>
+                  </div>
+                {% bootstrap_field form.phone_number show_label=True %}
+                  {% bootstrap_button button_class="btn btn-outline-primary" button_type="submit" content="Update Details" %}
+                </form>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+      $('#openFormPopover').popover({
+          html: true,
+          content: function() {
+              return $('#formContent').html();
+          }
+      });
+  });
+</script>
+{% endblock %}

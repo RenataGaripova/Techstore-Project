@@ -1,0 +1,283 @@
+[
+{
+  "model": "products.category",
+  "pk": 7,
+  "fields": {
+    "slug": "vivo-smartphones",
+    "name": "Vivo Smartphones",
+    "description": "vivo is a Chinese multinational technology company headquartered in Dongguan, Guangdong, that designs and develops smartphones and smartphone accessories.",
+    "photo": "category_images/vivo_cat.png",
+    "parent": 18
+  }
+},
+{
+  "model": "products.category",
+  "pk": 8,
+  "fields": {
+    "slug": "samsung-smartphones",
+    "name": "Samsung Smartphones",
+    "description": "Samsung smartphones, primarily within the Galaxy series, are known for their innovative features, powerful performance, and diverse range of models catering to different needs and budgets.",
+    "photo": "category_images/sams_cat.png",
+    "parent": 18
+  }
+},
+{
+  "model": "products.category",
+  "pk": 9,
+  "fields": {
+    "slug": "apple-smartphones",
+    "name": "Apple Smartphones",
+    "description": "iPhone, series of smartphones produced by Apple Inc., combining mobile telephone, digital camera, music player, and personal computing technologies.",
+    "photo": "category_images/smartphone.jpg",
+    "parent": 18
+  }
+},
+{
+  "model": "products.category",
+  "pk": 10,
+  "fields": {
+    "slug": "xiaomi-smartphones",
+    "name": "Xiaomi Smartphones",
+    "description": "Discover the latest Xiaomi smartphones with cutting-edge technology. Find the best smartphone from the Xiaomi, Redmi and POCO series.",
+    "photo": "category_images/xiaomi_cat.png",
+    "parent": 18
+  }
+},
+{
+  "model": "products.category",
+  "pk": 11,
+  "fields": {
+    "slug": "apple-macbook",
+    "name": "Apple MacBook",
+    "description": "The most powerful Mac laptops and desktops ever. Supercharged by Apple silicon. MacBook Air, MacBook Pro, iMac, Mac mini, Mac Studio, and Mac Pro.",
+    "photo": "category_images/Apple_MacBook_Pro_16.png",
+    "parent": 12
+  }
+},
+{
+  "model": "products.category",
+  "pk": 12,
+  "fields": {
+    "slug": "laptops",
+    "name": "Laptops",
+    "description": "Shop the best deals on laptop, including Chromebooks and MacBooks. Find powerful, affordable options for work, study and gaming!",
+    "photo": "category_images/laptop_CepcoJS.png",
+    "parent": null
+  }
+},
+{
+  "model": "products.category",
+  "pk": 13,
+  "fields": {
+    "slug": "smartwatches",
+    "name": "Smartwatches",
+    "description": "Explore wide range of Smart watches Online at Gadget Hub with style, innovation and features.",
+    "photo": "category_images/huaw1.png",
+    "parent": null
+  }
+},
+{
+  "model": "products.category",
+  "pk": 14,
+  "fields": {
+    "slug": "headphones",
+    "name": "Headphones",
+    "description": "Rock your favourite tunes with our collection of headphones. Enjoy easy connection, long battery life, and a comfortable fit.",
+    "photo": "category_images/OEM_P9.png",
+    "parent": null
+  }
+},
+{
+  "model": "products.category",
+  "pk": 15,
+  "fields": {
+    "slug": "earphones",
+    "name": "Earphones",
+    "description": "Shop earphones and earbuds at reasonable prices at Gadget Hub. Great for the gym, travel, and mobile gaming!",
+    "photo": "category_images/pods3.png",
+    "parent": null
+  }
+},
+{
+  "model": "products.category",
+  "pk": 16,
+  "fields": {
+    "slug": "tablets",
+    "name": "Tablets",
+    "description": "Find a tablet which is just the perfect size to enjoy your favorite form of entertainment, absolutely anywhere.",
+    "photo": "category_images/Дизайн_без_названия_4.png",
+    "parent": null
+  }
+},
+{
+  "model": "products.category",
+  "pk": 17,
+  "fields": {
+    "slug": "mobile-accessories",
+    "name": "Mobile accessories",
+    "description": "We offer you a wide range of products to enhance, protect, and customize mobile devices. This includes items like phone cases, screen protectors, chargers, headphones, power banks, and more.",
+    "photo": "category_images/Дизайн_без_названия_4_копия.png",
+    "parent": null
+  }
+},
+{
+  "model": "products.category",
+  "pk": 18,
+  "fields": {
+    "slug": "1-smartphones",
+    "name": "Smartphones",
+    "description": "We offer the convenience of online shopping, allowing users to buy smartphones from anywhere, at any time.",
+    "photo": "category_images/Дизайн_без_названия_4_копия_6.png",
+    "parent": null
+  }
+},
+{
+  "model": "products.product",
+  "pk": 2,
+  "fields": {
+    "slug": "iphone-13-128-black",
+    "name": "Apple iPhone 13 128Gb Black",
+    "producer": "Apple",
+    "info": "Product info.",
+    "description": "The iPhone 13 features a 6.1-inch (155 mm) display with Super Retina XDR OLED technology at a resolution of 2532×1170 pixels and a pixel density of about 460 PPI with a refresh rate of 60 Hz.",
+    "quantity": 10,
+    "color": "Black",
+    "rating": 0.0,
+    "created_at": "2025-07-11T08:38:28.004Z",
+    "price": 297.0,
+    "category": 9
+  }
+},
+{
+  "model": "products.product",
+  "pk": 3,
+  "fields": {
+    "slug": "samsung-galaxy-a25-5g-128",
+    "name": "Samsung Galaxy A25 5G 6 128 Gb Black",
+    "producer": "Samsung",
+    "info": "Product info.",
+    "description": "The Galaxy A25 5G 6.5 inch, Super AMOLED display expresses rich colors and details up to 1000 nits brightness while enhanced with Vision Booster for clear outdoor visibility",
+    "quantity": 10,
+    "color": "Black",
+    "rating": 0.0,
+    "created_at": "2025-07-11T08:38:28.004Z",
+    "price": 274.99,
+    "category": 8
+  }
+},
+{
+  "model": "products.product",
+  "pk": 4,
+  "fields": {
+    "slug": "xiaomi-redmi-13c",
+    "name": "Xiaomi Redmi 13C 256 Gb Midnight Black",
+    "producer": "Xiaomi",
+    "info": "Product info.",
+    "description": "The Xiaomi Redmi 13C features an ultra-high-performance 2.0 GHz Helio G85 Octo-Core processor for superior performance. Moreover, with 8 GB of RAM and 256 GB of storage space, it lets you install all your applications without the slightest problem.",
+    "quantity": 12,
+    "color": "Purple",
+    "rating": 0.0,
+    "created_at": "2025-07-11T08:38:28.004Z",
+    "price": 139.99,
+    "category": 10
+  }
+},
+{
+  "model": "products.product",
+  "pk": 5,
+  "fields": {
+    "slug": "iphone-16-promax-256-gold",
+    "name": "Apple iPhone 16 Pro Max 256Gb Golden",
+    "producer": "Apple",
+    "info": "Product info.",
+    "description": "iPhone 16 is built for Apple Intelligence, the personal intelligence system that helps you write, express yourself and get things done effortlessly. With groundbreaking privacy protections, it gives you peace of mind that no one else can access your data — not even Apple.",
+    "quantity": 8,
+    "color": "Golden",
+    "rating": 0.0,
+    "created_at": "2025-07-11T08:38:28.004Z",
+    "price": 1199.0,
+    "category": 9
+  }
+},
+{
+  "model": "products.product",
+  "pk": 6,
+  "fields": {
+    "slug": "samsung-galaxy-a55-256-db",
+    "name": "Samsung Galaxy A55 5G 256 Gb Deep Blue",
+    "producer": "Samsung",
+    "info": "The new Galaxy A55 is no different, packing solid all-round specs, a large, 6.6-inch display, a capable octa-core processor and a triple rear-camera setup.",
+    "description": "Display: 6.6” FHD+ Super AMOLED w/Corning Gorilla Glass Victus+ - Resolution 1080 x 2340 pixels\r\nMemory: 256GB 8GB RAM - MicroSD up to 1TB\r\nCamera: Triple 50 MP + 12 MP + 5 MP w/ LED flash, panorama, HDR -- Selfie 32 MP\r\nPlatform: OS, Android -- Chipset, Exynos 1480 -- CPU, Octa-core -- GPU, Xclipse 530\r\nBattery: Li-Ion 5000 mAh, non-removable\r\nDimensions: 6.34 x 3.05 x 0.32 in, 7.51 oz",
+    "quantity": 5,
+    "color": "Deep Blue",
+    "rating": 0.0,
+    "created_at": "2025-07-11T08:38:28.004Z",
+    "price": 399.99,
+    "category": 8
+  }
+},
+{
+  "model": "products.gallery",
+  "pk": 9,
+  "fields": {
+    "photo": "product_images/Дизайн_без_названия_4_копия_2.png",
+    "product": 5
+  }
+},
+{
+  "model": "products.gallery",
+  "pk": 10,
+  "fields": {
+    "photo": "product_images/xiaomi_cat.png",
+    "product": 4
+  }
+},
+{
+  "model": "products.gallery",
+  "pk": 11,
+  "fields": {
+    "photo": "product_images/Дизайн_без_названия_4_копия_4.png",
+    "product": 3
+  }
+},
+{
+  "model": "products.gallery",
+  "pk": 16,
+  "fields": {
+    "photo": "product_images/61s7W4UjnoL._AC_SL1500_.jpg",
+    "product": 6
+  }
+},
+{
+  "model": "products.gallery",
+  "pk": 18,
+  "fields": {
+    "photo": "product_images/413GBmd3ulL._AC_SL1500_.jpg",
+    "product": 6
+  }
+},
+{
+  "model": "products.gallery",
+  "pk": 19,
+  "fields": {
+    "photo": "product_images/41EzSVi2cHL._AC_SL1500_.jpg",
+    "product": 6
+  }
+},
+{
+  "model": "products.gallery",
+  "pk": 20,
+  "fields": {
+    "photo": "product_images/61VuVU94RnL._AC_SL1500_.jpg",
+    "product": 2
+  }
+},
+{
+  "model": "products.gallery",
+  "pk": 21,
+  "fields": {
+    "photo": "product_images/61qD-qiTKEL._AC_SL1500_.png",
+    "product": 2
+  }
+}
+]

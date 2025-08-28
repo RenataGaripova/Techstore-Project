@@ -1,0 +1,8 @@
+<div class="card h-100 mx-auto" style="width: 13rem;">
+    <img src="{{ category.photo.url }}" class="card-img-top" alt="{{ category.name }}">
+    <div class="card-body">
+      <h5 class="card-title">{{ category.name }}</h5>
+      <p class="card-text text-secondary">Number of items: {{ category.count_all_products }}</p>
+      <a href="{% url 'products:category_products' category.slug %}" class="btn btn-outline-primary">Shop items</a>
+    </div>
+  </div>

@@ -1,0 +1,33 @@
+<div class="card h-100 mx-auto shadow" style="width: 13rem;">
+  <img src="{{ product.get_coverage_photo.url }}" class="card-img-top img-fluid mt-4" alt="not found" style="max-height: 200px; object-fit: contain;">
+  <div class="card-body">
+    <a href="{% url 'products:product_details' product.slug %}" class="link-dark link-underline-light link-offset-2 mb-2">
+      <p class="card-text">{{ product.name }}</p>
+    </a>
+  </div>
+  <ul class="list-group list-group-flush border-white p-0">
+    <li class="list-group-item border-white">
+      <div class="d-flex justify-content-start">
+        {% if product.discount %}
+        <p class="card-text">
+          <small class="text-body-secondary text-decoration-line-through me-3">{{ product.price }}</small>
+        </p>
+        {% endif %}
+        <h5 class="card-title text-success">{{ product.sell_price }} $</h5>
+      </div>
+      </li>
+    {% if product.product_rating %}
+      <li class="list-group-item border-white"><p class="card-text"><b class="text-warning">★</b> Rating: {{ product.product_rating }}</p></li>
+    {% else %}
+    <li class="list-group-item border-white"><p class="card-text"><b class="text-warning">★</b> Rating: Not rated yet</p></li>
+    {% endif %}
+  </ul>
+  <div class="card-body">
+    <form class="cart-form" data-url="{% url 'carts:cart_add' product.slug %}" data-wishlist-url="{% url 'carts:wishlist_add' product.slug %}">
+      {% csrf_token %}
+      <input type="hidden" id="quantity" name="quantity" value="1"/>
+      <button type="button" class="btn btn-outline-primary w-100 add-to-cart" >Add to Cart</button>
+      <button type="button" class="btn btn-outline-success w-100 mt-2 add-to-wishlist">Add to Wishlist</button>
+    </form>
+  </div>
+</div>

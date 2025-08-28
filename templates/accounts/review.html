@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block title %}
+  {% if '/edit_review/' in request.path %}
+    Edit review
+  {% else %}
+    Delete review
+  {% endif %}
+{% endblock %}
+{% block content %}
+  {% if user.is_authenticated %}
+    <div class="col d-flex justify-content-center mt-5">
+      <div class="card" style="width: 40rem;">
+        <div class="card-header">
+          {% if '/edit_review/' in request.path %}
+            Edit review
+          {% else %}
+            Delete review
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <form method="post"
+            {% if '/edit_comment/' in request.path %}
+              action="{% url 'blog:edit_comment' comment.post_id comment.id %}"
+            {% endif %}>
+            {% csrf_token %}
+            {% if not '/delete_review/' in request.path %}
+              {% bootstrap_form form %}
+            {% else %}
+              <p class="border-0">{{ review.text }}</p>
+            {% endif %}
+            {% bootstrap_button button_type="submit" content="Отправить" %}
+          </form>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}

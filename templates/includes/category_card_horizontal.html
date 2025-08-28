@@ -1,0 +1,14 @@
+<div class="card mb-3 shadow p-3 mb-5 bg-body rounded" style="max-width: 600px; height: 250px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ category.photo.url }}" class="img-fluid rounded-start mt-3" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ category.name }}</h5>
+          <p class="card-text">{{ category.description }}</p>
+          <a href="{% url 'products:category_products' category.slug %}" class="card-link link-primary">Shop now</a>
+        </div>
+      </div>
+    </div>
+  </div>

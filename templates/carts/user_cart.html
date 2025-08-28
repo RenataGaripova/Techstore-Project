@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block title %}
+  Cart Page
+{% endblock %}
+{% block content %}
+<div class="container-md my-5 shadow bg-white rounded-3">
+  <div class="row">
+    <div class="col-md-8 p-5">
+      <h3 class="border-bottom p-3">Your Cart</h3>
+      {% for cart in carts %}
+      <div id="cart-wrapper-{{ cart.id }}" class="mb-3 border-bottom p-3" data-cart-id="{{ cart.id }}">
+        <div class="row g-0">
+          <div class="col-md-3">
+            <img src="{{ cart.product.get_coverage_photo.url }}"class="img-fluid" alt="not found" style="max-height: 150px; object-fit: contain;">
+          </div>
+          <div class="col-md-9">
+            <div class="card-body">
+              <a class="card-title mb-3 link-dark link-underline-light link-offset-2 mb-2" href="{% url 'products:product_details' cart.product.slug %}">
+                <h5>{{ cart.product.name }}</h5>
+              </a>
+              {% if cart.product.discount %}
+                <p class="card-text">
+                  <small class="text-body-secondary text-decoration-line-through me-3">{{ cart.product.price }}</small><small class="text-body-secondary">{{ cart.product.sell_price }} $</small>
+                </p>
+                <p id="product-total-{{ cart.id }}" class="card-text fw-bold text-success">Subtotal: {{ cart.get_products_price }} $</p>
+              {% else %}
+                <p class="card-text">
+                  <small class="text-body-secondary">{{ cart.product.sell_price }} $</small>
+                </p>
+                <p id="product-total-{{ cart.id }}" class="card-text fw-bold text-success">Subtotal: {{ cart.get_products_price }} $</p>
+              {% endif %}
+              <div>
+                <form 
+                class="cart-form" 
+                data-url="{% url 'carts:cart_change' cart.product.slug %}"
+                data-remove-url="{% url 'carts:cart_remove' cart.product.slug %}"
+                >
+                  {% csrf_token %}
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label for="quantity-{{ cart.id }}" class="mb-2">
+                        <p class="fs-6">Quantity:</p>
+                      </label>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="quantity-wrapper" data-max="{{ cart.product.quantity }}"
+                           style="display: flex; align-items: center; border: 1px solid #ddd; padding: 2px 5px; border-radius: 6px; width: fit-content;">
+                        <button type="button" class="decrease-item"
+                                style="background: none; border: none; font-size: 15px; cursor: pointer;" data-cart-id="{{ cart.id }}">-</button>                  
+                        <input type="text" id="quantity-{{ cart.id }}" name="quantity" 
+                               value="{{ cart.quantity }}" readonly 
+                               style="width: 40px; text-align: center; border: none; font-size: 13px;" />
+                        <button type="button" class="increase-item"
+                                style="background: none; border: none; font-size: 15px; cursor: pointer;" data-cart-id="{{ cart.id }}">+</button>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <button type="button" class="btn btn-outline-danger btn-sm remove-from-cart" data-cart-id="{{ cart.id }}">
+                    Remove Item
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col-md-4 p-5">
+      <h3 class="border-bottom p-3">Order Summary</h3>
+      <div class="p-3">
+        <h5>Subtotal: <span id="cart-total" class="text-success">{{ carts.total_price }} $</span></h5>
+        <h5 class="mt-3">Shipping: <span class="text-success">FREE</span></h5>
+        <h5 class="mt-3 text-secondary">Tax: calculated in checkout</span></h5>
+        <a href="{% url 'orders:create_order' %}" class="mt-3 btn btn-outline-dark w-100">Go to Checkout</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
