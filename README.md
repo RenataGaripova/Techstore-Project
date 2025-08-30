@@ -47,9 +47,9 @@ docker-compose up --build
 ```
 При запущенных контейнерах: выполнить миграции, собрать статику и установить фикстуры:
 ```
-docker-compose exec web python manage.py migrate
+docker-compose exec techstore python manage.py migrate
 docker-compose exec techstore python manage.py collectstatic
-docker-compose exec web python loaddata db.json
+docker-compose exec techstore python loaddata db.json
 ```
 Веб-приложение доступно по адресу: http://127.0.0.1/
 
