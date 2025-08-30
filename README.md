@@ -40,6 +40,7 @@ git clone https://github.com/RenataGaripova/Techstore-Project.git
 cd techstore
 ```
 Создать и заполнить .env файл с переменными окружения (пример в .env.example)
+
 Сборка и запуск Docker контейнеров:
 ```
 docker-compose up --build
