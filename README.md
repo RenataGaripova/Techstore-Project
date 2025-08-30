@@ -49,7 +49,7 @@ docker-compose up --build
 ```
 docker-compose exec techstore python manage.py migrate
 docker-compose exec techstore python manage.py collectstatic
-docker-compose exec techstore python loaddata db.json
+ocker-compose exec techstore python manage.py loaddata db.json
 ```
 Веб-приложение доступно по адресу: http://127.0.0.1/
 
